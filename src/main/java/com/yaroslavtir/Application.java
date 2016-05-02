@@ -15,10 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Application {
     public static void main(String... args) throws IOException {
         ApplicationContext appContext = SpringApplication.run(Application.class, args);
-        MainService contactService = appContext.getBean(MainService.class);
-//        String id = contactService.savePerson();
-//        contactService.test1(id);
-        contactService.test3();
-        SpringApplication.exit(appContext);
+        ContactService contactService = appContext.getBean(ContactService.class);
+        contactService.loadContacts(Application.class.getResource("contacts.txt").getPath());
     }
 }
